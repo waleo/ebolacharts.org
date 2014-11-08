@@ -2,6 +2,17 @@ doctype html
 html
   head
     title= title
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/dc.css')
+    link(rel='stylesheet', href='/stylesheets/site.css')
   body
     block content
+    script(src='javascripts/jquery-2.1.1.min.js')
+    script(src='javascripts/jquery.csv-0.71.min.js')
+    <!--JQuery Scripts-->
+    script(src='javascripts/d3.min.js')
+    script(src='javascripts/crossfilter.min.js')
+    script(src='javascripts/dc.min.js')
+    <!--Charting Scripts-->
+    script(src='javascripts/overview.js')
