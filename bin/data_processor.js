@@ -2,49 +2,60 @@
 
 var util = require("util");
 var fs = require("fs");
+var request = require('request');
 
 var writeFile = true;
-var toFile = "../html/graph_data.csv";
+var toFile = "test_out.csv";
+var csvFileName="https://raw.githubusercontent.com/cmrivers/ebola/master/country_timeseries.csv"
+var countries;
+var casesTotals = {};
+var deathsTotals = {};
 
-var file = "../../country_timeseries.csv";
-var data = readFileIntoArray(file);
+request.get(csvFileName, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+        cdata = convertDataIntoArray(body);
+        processData(cdata);
+    } else {
+        console.log(response)
+    }
+});
 
-if (data.length > 0) {
-  var countries = getCountries(data);
-  data = convertCumulativeDataToDailyNumbers(data);
 
-  var newData = [];
-  newData.push(["Date", "Day", "Country", "Type", "Value", "TotalValue"]);
+function processData(data) {
+    if (data.length > 0) {
+      countries = getCountries(data);
+      data = convertCumulativeDataToDailyNumbers(data);
 
-  var casesTotals = {};
-  var deathsTotals = {};
+      var newData = [];
+      newData.push(["Date", "Day", "Country", "Type", "Value", "TotalValue"]);
 
-  for (var i = 0; i < countries.length; i++) {
-    casesTotals[countries[i]] = 0;
-    deathsTotals[countries[i]] = 0;
-  }
 
-  for (var i = data.length - 1; i > 0; i--) {
-    newData = newData.concat(convertDateRowToCountryRow(data[0], data[i]));
-  }
+      for (var i = 0; i < countries.length; i++) {
+        casesTotals[countries[i]] = 0;
+        deathsTotals[countries[i]] = 0;
+      }
 
-  var string = convertArrayToCSVString(newData);
+      for (var i = data.length - 1; i > 0; i--) {
+        newData = newData.concat(convertDateRowToCountryRow(data[0], data[i]));
+      }
 
-  if (writeFile) {
-    util.puts("Writing data to file: " + toFile);
-    fs.writeFile(toFile, string);
-  }
-  else {
-    util.puts("Not writing to file.");
-  }
+      var string = convertArrayToCSVString(newData);
+
+      if (writeFile) {
+        util.puts("Writing data to file: " + toFile);
+        fs.writeFile(toFile, string);
+      }
+      else {
+        util.puts("Not writing to file.");
+      }
+    }
 }
 
 //functions
-function readFileIntoArray(file) {
+function convertDataIntoArray(data) {
   var newRows = [];
 
-  var fileContents = fs.readFileSync(file);
-  var rows = fileContents.toString().split("\n");
+  var rows = data.split("\n");
 
   for (var i = 0; i < rows.length; i++) {
     var row = rows[i].split(",");
