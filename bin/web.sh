@@ -1,3 +1,3 @@
 bin/www &
-bin/data_processor.js
+node bin/data_processor.js
 
