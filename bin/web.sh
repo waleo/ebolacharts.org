@@ -1,3 +1,3 @@
-bin/www &
+npm start &
 node bin/data_processor.js
 
