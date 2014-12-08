@@ -1,1 +1,1 @@
-web: bin/web.sh
+npm start
