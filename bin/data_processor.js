@@ -5,7 +5,7 @@ var fs = require("fs");
 var request = require('request');
 
 var writeFile = true;
-var toFile = "public/graph_data.csv";
+var toFile = process.env.OPENSHIFT_REPO_DIR + "public/graph_data.csv";
 var csvFileName="https://raw.githubusercontent.com/cmrivers/ebola/master/country_timeseries.csv"
 var countries;
 var casesTotals = {};
