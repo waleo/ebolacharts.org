@@ -3,7 +3,7 @@ extends layout
 block content
     doctype html
     html.
-     
+
         <div class="content">
             <div class="well">
                 <div class="row">
@@ -22,31 +22,58 @@ block content
             <div class='row'>
                 <h4> <strong>Click on the bar charts or map to filter </strong></h4>
             </div>
-            <div id="graphs" class="row">
 
-                <div class="col-md-3 chart pie-chart">
-                    <div id="casesDeathsRowChart"></div>
+            <div id="graphs">
+              <div class="row">
+                <div class="col-md-6 chart small-chart">
+                  <p id="mortality" />
                 </div>
 
-                <div class="col-md-9 chart line-chart">
-                    <div id="cumulative"></div>
+                <div class="col-md-6 chart small-chart">
+                  <div id="casesDeathsRowChart">
+                    <div class="row">
+                      <div class="pull-left">
+                        <h5>Total Cases and Deaths</h5>
+                      </div>
+                      <div class="chart-filter pull-left">
+                        <a class="reset" href="javascript:casesDeathsRowChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 chart line-chart">
+                  <div id="casesDeathsChart">
+                    <h5>New Cases and Deaths Per Day</h5>
+                  </div>
                 </div>
 
-                <div class="col-md-3 chart pie-chart">
-                    <p id="mortality" />
+                <div class="col-md-6 chart line-chart">
+                  <div id="cumulative">
+                    <h5>Total Cases and Deaths Over Time</h5>
+                  </div>
                 </div>
+              </div>
 
-                <div class="col-md-9 chart line-chart">
-                    <div id="casesDeathsChart"></div>
-                </div>
-
+              <div class="row">
                 <div class="col-md-12 chart map-chart">
-                    <div id="map"></div>
+                  <div id="map">
+                    <div class="row">
+                      <div class="pull-left">
+                        <h5>World Map</h5>
+                      </div>
+                      <div class="chart-filter pull-left">
+                        <span class="reset" style="display: none;">Current countries: <span class="filter"></span></span>
+                        <a class="reset" href="javascript:map.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                      </div>
+                  </div>
                 </div>
+              </div>
 
             </div>
-            
-            
+
             <hr class="featurette-divider">
             <div class='row'>
                 <h4> <strong>Data Table:</strong></h4>

@@ -1,11 +1,13 @@
 body {
   margin: 10px;
   font: 10px sans-serif;
+  background-color: #eee;
 }
 
 .content {
   width: 930px;
   margin: 0 auto;
+  padding-top: 50px;
 }
 
 .row {
@@ -88,28 +90,24 @@ cursor: pointer;
 }
 
 .chart {
-  background-color: whitesmoke;
-  border: solid grey 1px;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  text-align: center;
-  padding: 0px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: solid lightgrey 0px;
+  margin-bottom: 0px;
+  padding: 10px;
 }
 
-.pie-chart {
-  width: 220px;
-  height: 220px;
-  padding: 10px !important;
+.chart-filter {
+  margin-left: 5px;
+  margin-top: 12px;
 }
 
-.line-chart {
-  width: 700px;
-  padding: 10px !important;
-  margin-right: 0px;
+.small-chart {
+  height: 160px;
 }
 
 .map-chart {
-  width: 930px;
+  width: 960px;
+  padding: 0px !important;
 }
 
 #map path {
@@ -121,6 +119,15 @@ cursor: pointer;
   fill: #eee;
 }
 
+#map .row {
+  margin-left: 10px;
+}
+
+#map .chart-filter {
+  margin-top: 14px !important;
+}
+
 #mortality {
-  margin-top: 62.5px;
+  margin-top: 44px;
+  text-align: center;
 }
