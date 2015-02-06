@@ -7,7 +7,6 @@ body {
 .content {
   width: 930px;
   margin: 0 auto;
-  padding-top: 50px;
 }
 
 .row {
@@ -16,6 +15,10 @@ body {
 
 #reset {
   margin-top: 3px;
+}
+
+.reset-row {
+  margin: 24px;
 }
 
 .axis path,
@@ -93,7 +96,7 @@ cursor: pointer;
   background-color: rgba(255, 255, 255, 0.2);
   border: solid lightgrey 0px;
   margin-bottom: 0px;
-  padding: 10px;
+  padding: 0px;
 }
 
 .chart-filter {
@@ -106,7 +109,7 @@ cursor: pointer;
 }
 
 .map-chart {
-  width: 960px;
+  width: 930px;
   padding: 0px !important;
 }
 

@@ -7,20 +7,24 @@ block content
         <div class="content">
             <div class="well">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <h4>Ebola Graphs</h4>
                     </div>
-                    <div class='col-md-4 '>
-                        <h5>Star us if you like this project!</h5>
+                    <div class="col-md-4">
+                        <h4 class="pull-right">Star us on GitHub!</h4>
+                      </div>
+                      <div class="col-md-2">
                         <iframe src="https://ghbtns.com/github-btn.html?user=waleo&repo=ebolacharts.org&type=watch&count=true&size=large" frameborder="0" scrolling="0" width="" height="30px"></iframe>
-                    </div>
-                    <div class="col-md-2 pull-right">
-                        <button id="reset" class="btn btn-warning pull-right">Reset All Graphs</button>
                     </div>
                 </div>
             </div>
-            <div class='row'>
-                <h4> <strong>Click on the bar charts or map to filter </strong></h4>
+            <div class="row reset-row">
+              <div class="col-md-9">
+                <h4>Click on the bar charts or map to filter</h4>
+              </div>
+              <div class="col-md-3 pull-right">
+                <button id="reset" class="btn btn-warning pull-right">Reset All Graphs</button>
+              </div>
             </div>
 
             <div id="graphs">
