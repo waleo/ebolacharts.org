@@ -2,104 +2,94 @@ extends layout
 
 block content
     doctype html
-    html.
-
-        <div class="content">
-            <div class="well">
-                <div class="row">
-                    <div class="col-md-6">
-                        <h4>Ebola Graphs</h4>
-                    </div>
-                    <div class="col-md-4">
-                        <h4 class="pull-right">Star us on GitHub!</h4>
-                      </div>
-                      <div class="col-md-2">
-                        <iframe src="https://ghbtns.com/github-btn.html?user=waleo&repo=ebolacharts.org&type=watch&count=true&size=large" frameborder="0" scrolling="0" width="" height="30px"></iframe>
-                    </div>
-                </div>
-            </div>
-            <div class="row reset-row">
-              <div class="col-md-9">
-                <h4>Click on the bar charts or map to filter</h4>
+    .content.container-fluid.
+      <h1 class='hero'> Visualize 2014 Ebola Data through Interactive Charts</h1>
+      <div class="well">
+          <div class="row">
+              <div class="col-md-6">
+                  <h4 class="">Let us know if you like this project</h4>
+                  <iframe src="https://ghbtns.com/github-btn.html?user=waleo&repo=ebolacharts.org&type=watch&count=true&size=large" frameborder="0" scrolling="0" width="" height="30px"></iframe>
               </div>
-              <div class="col-md-3 pull-right">
-                <button id="reset" class="btn btn-warning pull-right">Reset All Graphs</button>
-              </div>
-            </div>
 
-            <div id="graphs">
+              <div class="col-md-2 pull-right">
+                  <button id="reset" class="btn btn-large btn-danger">Reset All Charts</button>
+              </div>
+          </div>
+      </div>
+
+      <div id="graphs">
+        <div class="row">
+          <div class="col-md-6 chart small-chart">
+            <p id="mortality" />
+          </div>
+
+          <div class="col-md-6 chart small-chart">
+            <div id="casesDeathsRowChart">
               <div class="row">
-                <div class="col-md-6 chart small-chart">
-                  <p id="mortality" />
+                <div class="pull-left">
+                  <h5>Total Cases and Deaths</h5>
                 </div>
-
-                <div class="col-md-6 chart small-chart">
-                  <div id="casesDeathsRowChart">
-                    <div class="row">
-                      <div class="pull-left">
-                        <h5>Total Cases and Deaths</h5>
-                      </div>
-                      <div class="chart-filter pull-left">
-                        <a class="reset" href="javascript:casesDeathsRowChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-                      </div>
-                    </div>
-                  </div>
+                <div class="chart-filter pull-left">
+                  <a class="reset" href="javascript:casesDeathsRowChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
                 </div>
               </div>
-
-              <div class="row">
-                <div class="col-md-6 chart line-chart">
-                  <div id="casesDeathsChart">
-                    <h5>New Cases and Deaths Per Day</h5>
-                  </div>
-                </div>
-
-                <div class="col-md-6 chart line-chart">
-                  <div id="cumulative">
-                    <h5>Total Cases and Deaths Over Time</h5>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-12 chart map-chart">
-                  <div id="map">
-                    <div class="row">
-                      <div class="pull-left">
-                        <h5>World Map</h5>
-                      </div>
-                      <div class="chart-filter pull-left">
-                        <span class="reset" style="display: none;">Current countries: <span class="filter"></span></span>
-                        <a class="reset" href="javascript:map.filterAll();dc.redrawAll();" style="display: none;">reset</a>
-                      </div>
-                  </div>
-                </div>
-              </div>
-
             </div>
-
-            <hr class="featurette-divider">
-            <div class='row'>
-                <h4> <strong>Data Table:</strong></h4>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <table id="dc-data-table" class="table table-bordered table-striped">
-                        <thead>
-                            <tr class="header">
-                                <th>Day
-                                <th>Country</th>
-                                <th>Type</th>
-                                <th>Value</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-            <footer>
-                <p>
-                    Credit © Wale Olaleye, Zachary Christensen. 2014-2015 - Provided as a public service project. Find out more at the <a href=https://github.com/waleo/ebolacharts.org> Github Repo </a>
-                </p>
-            </footer>
+          </div>
         </div>
+
+        <div class="row">
+          <div class="col-md-6 chart line-chart">
+            <div id="casesDeathsChart">
+              <h5>New Cases and Deaths Per Day</h5>
+            </div>
+          </div>
+
+          <div class="col-md-6 chart line-chart">
+            <div id="cumulative">
+              <h5>Total Cases and Deaths Over Time</h5>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 chart map-chart">
+            <div id="map">
+              <div class="row">
+                <div class="pull-left">
+                  <h5>World Map</h5>
+                </div>
+                <div class="chart-filter pull-left">
+                  <span class="reset" style="display: none;">Current countries: <span class="filter"></span></span>
+                  <a class="reset" href="javascript:map.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="featurette-divider">
+      <div class='row'>
+          <h4> <strong>Data Table:</strong></h4>
+      </div>
+      <div class="row">
+          <div class="col-md-12">
+              <table id="dc-data-table" class="table table-bordered table-striped">
+                  <thead>
+                      <tr class="header">
+                          <th>Day
+                          <th>Country</th>
+                          <th>Type</th>
+                          <th>Value</th>
+                          <th>Total</th>
+                      </tr>
+                  </thead>
+              </table>
+          </div>
+      </div>
+      <footer>
+          <p>
+              Credit © Wale Olaleye, Zachary Christensen. 2014-2015 - Provided as a public service project. Find out more at the <a href=https://github.com/waleo/ebolacharts.org> Github Repo </a>
+          </p>
+      </footer>
+        
